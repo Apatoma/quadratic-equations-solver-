@@ -2,7 +2,7 @@
 
 A modern static web application to solve quadratic equations (ax² + bx + c = 0) with real-time calculations and elegant UI.
 
-![Preview](https://via.placeholder.com/800x600.png?text=Quadratic+Equation+Solver+Interface) 
+![Preview]() 
 *(Replace with actual screenshot URL after deployment)*
 
 ## Features ✨
