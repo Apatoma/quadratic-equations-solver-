@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Cuadrática</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Ecuaciones Cuadráticas</h1>
+        <div class="calculator">
+            <div class="input-group">
+                <label for="a">Coeficiente a</label>
+                <input type="number" id="a" step="any">
+            </div>
+            <div class="input-group">
+                <label for="b">Coeficiente b</label>
+                <input type="number" id="b" step="any">
+            </div>
+            <div class="input-group">
+                <label for="c">Coeficiente c</label>
+                <input type="number" id="c" step="any">
+            </div>
+            <button onclick="calcular()">Resolver</button>
+            <div class="result" id="result">
+                <p id="solucion1"></p>
+                <p id="solucion2"></p>
+                <p id="error"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calcular() {
+            // Obtener valores
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            
+            // Resetear resultados
+            document.getElementById('error').textContent = '';
+            document.getElementById('solucion1').textContent = '';
+            document.getElementById('solucion2').textContent = '';
+
+            // Validar entrada
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById('error').textContent = "Todos los campos son requeridos";
+                return;
+            }
+
+            // Validar coeficiente a
+            if(a === 0) {
+                document.getElementById('error').textContent = "El coeficiente 'a' no puede ser cero";
+                return;
+            }
+
+            // Calcular discriminante
+            const discriminante = b**2 - 4*a*c;
+
+            // Calcular soluciones
+            if(discriminante < 0) {
+                const real = (-b/(2*a)).toFixed(2);
+                const imaginaria = (Math.sqrt(-discriminante)/(2*a)).toFixed(2);
+                document.getElementById('solucion1').textContent = `x₁ = ${real} + ${imaginaria}i`;
+                document.getElementById('solucion2').textContent = `x₂ = ${real} - ${imaginaria}i`;
+            } 
+            else if(discriminante === 0) {
+                const x = (-b/(2*a)).toFixed(2);
+                document.getElementById('solucion1').textContent = `Solución doble: x = ${x}`;
+            } 
+            else {
+                const x1 = ((-b + Math.sqrt(discriminante))/(2*a)).toFixed(2);
+                const x2 = ((-b - Math.sqrt(discriminante))/(2*a)).toFixed(2);
+                document.getElementById('solucion1').textContent = `x₁ = ${x1}`;
+                document.getElementById('solucion2').textContent = `x₂ = ${x2}`;
+            }
+        }
+    </script>
+</body>
+</html>
