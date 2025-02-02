@@ -2,8 +2,8 @@
 
 A modern static web application to solve quadratic equations (ax² + bx + c = 0) with real-time calculations and elegant UI.
 
-![Preview]() 
-*(Replace with actual screenshot URL after deployment)*
+![Preview](https://i.imgur.com/acSGX13.png) 
+
 
 ## Features ✨
 - 🚀 **Instant calculations** with JavaScript
